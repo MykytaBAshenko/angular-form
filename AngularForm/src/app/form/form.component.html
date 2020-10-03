@@ -1,0 +1,115 @@
+<main>
+    <div class="main-div-container">
+        <div class="main-div-container-shell">
+    <h1>Prototype: Form validation, notification & errors</h1>
+        <form [formGroup]="sendForm">
+            <div class="form-head_notification">
+                <div *ngIf="whichHappen === 1" class="form-head_notfication-success form-head_notfication">
+                        <svg width="20" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.00004 16.42L0.790039 10.21L3.62004 7.38L7.00004 10.77L16.88 0.880005L19.71 3.71L7.00004 16.42Z" fill="black" fill-opacity="0.5"/>
+                            </svg>
+                        <div class="notification-text">
+                            Form success
+                        </div>
+                </div>
+                <div *ngIf="whichHappen === -1" class="form-head_notfication-error form-head_notfication">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 13H11V15H9V13ZM9 5H11V11H9V5ZM10 0C4.47 0 0 4.5 0 10C0 12.6522 1.05357 15.1957 2.92893 17.0711C3.85752 17.9997 4.95991 18.7363 6.17317 19.2388C7.38642 19.7413 8.68678 20 10 20C12.6522 20 15.1957 18.9464 17.0711 17.0711C18.9464 15.1957 20 12.6522 20 10C20 8.68678 19.7413 7.38642 19.2388 6.17317C18.7362 4.95991 17.9997 3.85752 17.0711 2.92893C16.1425 2.00035 15.0401 1.26375 13.8268 0.761205C12.6136 0.258658 11.3132 0 10 0ZM10 18C7.87827 18 5.84344 17.1571 4.34315 15.6569C2.84285 14.1566 2 12.1217 2 10C2 7.87827 2.84285 5.84344 4.34315 4.34315C5.84344 2.84286 7.87827 2 10 2C12.1217 2 14.1566 2.84286 15.6569 4.34315C17.1571 5.84344 18 7.87827 18 10C18 12.1217 17.1571 14.1566 15.6569 15.6569C14.1566 17.1571 12.1217 18 10 18Z" fill="#C62828"/>
+                        </svg>
+                        <div class="notification-text">
+                            Form Error
+                        </div>    
+                </div>
+                <div class="form-head_notfication-info form-head_notfication">
+                    <svg width="7" height="17" viewBox="0 0 7 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.49988 0C5.10206 0 4.72053 0.158035 4.43922 0.43934C4.15792 0.720644 3.99988 1.10218 3.99988 1.5C3.99988 1.89782 4.15792 2.27936 4.43922 2.56066C4.72053 2.84196 5.10206 3 5.49988 3C5.89771 3 6.27924 2.84196 6.56054 2.56066C6.84185 2.27936 6.99988 1.89782 6.99988 1.5C6.99988 1.10218 6.84185 0.720644 6.56054 0.43934C6.27924 0.158035 5.89771 0 5.49988 0ZM5.13988 4.77C3.94988 4.87 0.699882 7.46 0.699882 7.46C0.499882 7.61 0.559883 7.6 0.719883 7.88C0.879883 8.15 0.859883 8.17 1.04988 8.04C1.24988 7.91 1.57988 7.7 2.12988 7.36C4.24988 6 2.46988 9.14 1.55988 14.43C1.19988 17.05 3.55988 15.7 4.16988 15.3C4.76988 14.91 6.37988 13.8 6.53988 13.69C6.75988 13.54 6.59988 13.42 6.42988 13.17C6.30988 13 6.18988 13.12 6.18988 13.12C5.53988 13.55 4.34988 14.45 4.18988 13.88C3.99988 13.31 5.21988 9.4 5.88988 6.71C5.99988 6.07 6.29988 4.67 5.13988 4.77Z" fill="black" fill-opacity="0.5"/>
+                        </svg>
+                        <div class="notification-text">
+                            Form info
+                        </div>  
+                </div>
+            </div>
+            <div class="form-head_main-text">
+                <div class="form-head_main-text-logo">
+                    Email form
+                </div>
+                <div class="form-head_main-text-secondary">
+Form to receive your mail and your partner
+                </div>
+            </div>
+            <div class="form-head-control-not-muted form-head-control">
+                <h3>Your info</h3>
+                <div class="inputs-body">
+                    <mat-form-field [ngClass]="{'error-bg' :sendForm.controls['name1'].invalid && (sendForm.controls['name1'].dirty || sendForm.controls['name1'].touched)}" appearance="fill">
+                        <mat-label>Name fill</mat-label>
+                        <input formControlName="name1"  matInput placeholder="Placeholder">
+                        <mat-hint class="hints">
+                            <div *ngIf="sendForm.controls['name1'].invalid && (sendForm.controls['name1'].dirty || sendForm.controls['name1'].touched)" class="error-hint">Name is required</div>
+                            <div>Your name</div>
+                        </mat-hint>
+                      </mat-form-field>
+                      <mat-form-field  [ngClass]="{'error-bg' : sendForm.controls['email1'].invalid && (sendForm.controls['email1'].dirty || sendForm.controls['email1'].touched)}"  appearance="fill">
+                        <mat-label>Email fill</mat-label>
+                        <input formControlName="email1"  matInput placeholder="Placeholder">
+                        <mat-hint class="hints">
+                            <div *ngIf="sendForm.controls['email1'].invalid && (sendForm.controls['email1'].dirty || sendForm.controls['email1'].touched)" class="error-hint">Invalid email</div>
+                            <div>Your email</div>
+                        </mat-hint>
+                        
+                      </mat-form-field>
+                </div>
+            </div>
+            <div class="form-head-control-not-transparent form-head-control">
+                <h3>Your partner</h3>
+                <div class="inputs-body">
+                    <mat-form-field [ngClass]="{'error-bg' : sendForm.controls['name2'].invalid && (sendForm.controls['name2'].dirty || sendForm.controls['name2'].touched)}" appearance="outline">
+                        <mat-label>Name Outline</mat-label>
+                        <input formControlName="name2" matInput placeholder="Placeholder">
+                        <mat-hint class="hints">
+                            <div *ngIf="sendForm.controls['name2'].invalid && (sendForm.controls['name2'].dirty || sendForm.controls['name2'].touched)" class="error-hint">Name is required</div>
+                            <div>Name of your partner</div>
+                        </mat-hint>
+                      </mat-form-field>
+                      <mat-form-field [ngClass]="{'error-bg' : sendForm.controls['email2'].invalid && (sendForm.controls['email2'].dirty || sendForm.controls['email2'].touched)}" class="error" appearance="outline">
+                        <mat-label>Email outline</mat-label>
+                        <input formControlName="email2"  matInput placeholder="Placeholder">
+                        <mat-hint class="hints">
+                            <div *ngIf="sendForm.controls['email2'].invalid && (sendForm.controls['email2'].dirty || sendForm.controls['email2'].touched)" class="error-hint">Invalid email</div>
+                            <div>Email of your partner</div>
+                        </mat-hint>
+                      </mat-form-field>
+                </div>
+            </div>
+            <div class="form-actions-btn">
+                <div class="form-actions-btn-logo">Actions</div>
+                <div class="action_btn">
+                    <button (click)="formSuccess()" mat-stroked-button color="primary">
+                        <svg width="20" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.00004 16.42L0.790039 10.21L3.62004 7.38L7.00004 10.77L16.88 0.880005L19.71 3.71L7.00004 16.42Z" fill="#1565C0"/>
+                            </svg>
+                            
+                        Form submit success</button>
+                    <button (click)="formError()" mat-stroked-button color="primary">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 13H11V15H9V13ZM9 5H11V11H9V5ZM10 0C4.47 0 0 4.5 0 10C0 12.6522 1.05357 15.1957 2.92893 17.0711C3.85752 17.9997 4.95991 18.7363 6.17317 19.2388C7.38642 19.7413 8.68678 20 10 20C12.6522 20 15.1957 18.9464 17.0711 17.0711C18.9464 15.1957 20 12.6522 20 10C20 8.68678 19.7413 7.38642 19.2388 6.17317C18.7362 4.95991 17.9997 3.85752 17.0711 2.92893C16.1425 2.00035 15.0401 1.26375 13.8268 0.761205C12.6136 0.258658 11.3132 0 10 0ZM10 18C7.87827 18 5.84344 17.1571 4.34315 15.6569C2.84285 14.1566 2 12.1217 2 10C2 7.87827 2.84285 5.84344 4.34315 4.34315C5.84344 2.84286 7.87827 2 10 2C12.1217 2 14.1566 2.84286 15.6569 4.34315C17.1571 5.84344 18 7.87827 18 10C18 12.1217 17.1571 14.1566 15.6569 15.6569C14.1566 17.1571 12.1217 18 10 18Z" fill="#1565C0"/>
+                            </svg>
+                            
+                        Form submit error</button>
+                    <button (click)="openSnackBar(1,'All updated')" mat-stroked-button color="primary">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 0H2C0.9 0 0 0.9 0 2V14C0 15.11 0.9 16 2 16H6L10 20L14 16H18C19.11 16 20 15.11 20 14V2C20 0.9 19.11 0 18 0ZM18 14H13.17L10 17.17L6.83 14H2V2H18V14ZM8.75 11.71L5.25 8.21L6.66 6.79L8.75 8.88L13.34 4.3L14.75 5.71L8.75 11.71Z" fill="#1565C0"/>
+                            </svg>
+                            
+                        Snack bar success</button>
+                    <button (click)="openSnackBar(-1,'Server is not responding. Please do something.')" mat-stroked-button color="primary">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 20C6.73478 20 6.48043 19.8946 6.29289 19.7071C6.10536 19.5196 6 19.2652 6 19V16H2C1.46957 16 0.960859 15.7893 0.585786 15.4142C0.210714 15.0391 0 14.5304 0 14V2C0 0.89 0.9 0 2 0H18C18.5304 0 19.0391 0.210714 19.4142 0.585786C19.7893 0.960859 20 1.46957 20 2V14C20 14.5304 19.7893 15.0391 19.4142 15.4142C19.0391 15.7893 18.5304 16 18 16H11.9L8.2 19.71C8 19.9 7.75 20 7.5 20H7ZM8 14V17.08L11.08 14H18V2H2V14H8ZM11 8H9V4H11V8ZM11 12H9V10H11V12Z" fill="#1565C0"/>
+                            </svg>
+                            
+                        Snack bar error</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    </div>
+</main>
