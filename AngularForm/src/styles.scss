@@ -61,10 +61,11 @@ color: #EF5350;}
     font-weight: 500;
 }
 .mat-snack-bar-container{
+    margin: 0 0 24px 0 !important; 
     max-width: 100vw !important;
     min-width: 520px !important;
 }
-.custom-snack-bar-error-text, .custom-snack-bar-succes-text{
+.custom-snack-bar-error-text, .custom-snack-bar-success-text{
     padding-right: 20px;
 }
 .cdk-overlay-pane{
@@ -73,13 +74,13 @@ color: #EF5350;}
     justify-items: center;
 }
 
-@media  (max-width: 700px) {
+@media  (max-width: 730px) {
         .mat-snack-bar-container{
             max-width: 100vw !important;
             min-width: 0px !important;
     }
     .cdk-overlay-pane{
-        padding: 15px;
-
+        margin: 0 15px;
     }
 }
+
