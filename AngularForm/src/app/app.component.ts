@@ -7,13 +7,6 @@ import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 })
 export class AppComponent {
   title = 'AngularForm';
-  angForm: FormGroup;
-  constructor(private fb: FormBuilder) {
-   this.createForm();
- }
-  createForm() {
-   this.angForm = this.fb.group({
-      name: ['', [Validators.email, Validators.required] ]
-   });
+  constructor() {
  }
 }
