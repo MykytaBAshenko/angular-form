@@ -40,7 +40,7 @@ Form to receive your mail and your partner
             <div class="form-head-control-not-muted form-head-control">
                 <h3>Your info</h3>
                 <div class="inputs-body">
-                    <mat-form-field [ngClass]="{'error-bg' :sendForm.controls['name1'].invalid && (sendForm.controls['name1'].dirty || sendForm.controls['name1'].touched)}" appearance="fill">
+                    <mat-form-field [ngClass]="{'error-bg' :sendForm.controls['name1'].invalid  && (sendForm.controls['name1'].dirty || sendForm.controls['name1'].touched)}" appearance="fill">
                         <mat-label>Name fill</mat-label>
                         <input formControlName="name1"  matInput placeholder="Placeholder">
                         <mat-hint class="hints">
@@ -48,11 +48,11 @@ Form to receive your mail and your partner
                             <div>Your name</div>
                         </mat-hint>
                       </mat-form-field>
-                      <mat-form-field  [ngClass]="{'error-bg' : sendForm.controls['email1'].invalid && (sendForm.controls['email1'].dirty || sendForm.controls['email1'].touched)}"  appearance="fill">
+                      <mat-form-field  [ngClass]="{'error-bg' :  !isFirstEmailOk }"  appearance="fill">
                         <mat-label>Email fill</mat-label>
-                        <input formControlName="email1"  matInput placeholder="Placeholder">
+                        <input (ngModelChange)="checkFirstEmail(email1fill.value)" #email1fill formControlName="email1"  type="email" matInput placeholder="Placeholder">
                         <mat-hint class="hints">
-                            <div *ngIf="sendForm.controls['email1'].invalid && (sendForm.controls['email1'].dirty || sendForm.controls['email1'].touched)" class="error-hint">Invalid email</div>
+                            <div *ngIf="!isFirstEmailOk" class="error-hint">Invalid email</div>
                             <div>Your email</div>
                         </mat-hint>
                         
@@ -70,11 +70,11 @@ Form to receive your mail and your partner
                             <div>Name of your partner</div>
                         </mat-hint>
                       </mat-form-field>
-                      <mat-form-field [ngClass]="{'error-bg' : sendForm.controls['email2'].invalid && (sendForm.controls['email2'].dirty || sendForm.controls['email2'].touched)}" class="error" appearance="outline">
+                      <mat-form-field [ngClass]="{'error-bg' : !isSecondEmailOk}" class="error" appearance="outline">
                         <mat-label>Email outline</mat-label>
-                        <input formControlName="email2"  matInput placeholder="Placeholder">
+                        <input formControlName="email2" type="email" (ngModelChange)="checkSecondEmail(email2outline.value)" #email2outline matInput placeholder="Placeholder">
                         <mat-hint class="hints">
-                            <div *ngIf="sendForm.controls['email2'].invalid && (sendForm.controls['email2'].dirty || sendForm.controls['email2'].touched)" class="error-hint">Invalid email</div>
+                            <div *ngIf="!isSecondEmailOk" class="error-hint">Invalid email</div>
                             <div>Email of your partner</div>
                         </mat-hint>
                       </mat-form-field>
